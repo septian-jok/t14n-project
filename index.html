@@ -43,7 +43,16 @@
         @media (max-width: 768px) { .promuy-layout { grid-template-columns: 1fr; } }
         .box-category { background: var(--bg-card); border: 1px solid #232d35; border-radius: 12px; padding: 30px; }
         .box-category h3 { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid #232d35; padding-bottom: 10px; }
-        .tool-list li { padding: 12px; background: #1c242b; margin-bottom: 10px; border-radius: 6px; list-style: none; border-left: 3px solid var(--neon-green); }
+        .tool-list li { padding: 12px; background: #1c242b; margin-bottom: 10px; border-radius: 6px; list-style: none; border-left: 3px solid var(--neon-green); text-align: left; }
+        .game-subsections { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        
+        .game-card { background: #1c242b; padding: 20px; border-radius: 8px; border-top: 4px solid var(--text-gray); transition: 0.3s; cursor: pointer; text-align: left; }
+        .game-card.free { border-top-color: #3498db; }
+        .game-card.premium { border-top-color: var(--neon-green); }
+        .game-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .game-card h4 { margin-bottom: 10px; font-size: 1.1rem; }
+        .game-card p { font-size: 0.85rem; color: var(--text-gray); line-height: 1.4; }
+
         .game-area { background: #1c242b; border: 2px dashed var(--neon-green); border-radius: 8px; padding: 20px; margin-top: 15px; text-align: center; }
         .money-dashboard { background: #0b0f12; padding: 8px 15px; border-radius: 20px; display: inline-block; font-weight: bold; color: var(--neon-green); border: 1px solid var(--neon-green); margin-bottom: 15px; }
         .animal-illusion { font-size: 4rem; background: #0b0f12; padding: 20px; border-radius: 8px; margin: 15px 0; display: inline-block; letter-spacing: -15px; border: 1px solid #232d35; min-width: 150px; }
@@ -70,60 +79,36 @@
     <!-- ⏳ ANIMASI LOADING PREMIUM -->
     <div id="loader-wrapper"><div class="premium-spinner"></div><div class="loading-text">WETT YAA</div></div>
 
-    <!-- 🔒 JENDELA POP-UP PENDAFTARAN UTAMA -->
+    <!-- 🔒 JENDELA POP-UP PENDAFTARAN -->
     <div class="overlay-auth" id="auth-modal">
-        <!-- LANGKAH 1: ISI DATA DIRI -->
+        <!-- LANGKAH 1 -->
         <div class="register-card" id="reg-step-1">
             <h3>DAFTAR DULU YAW</h3>
-            
             <div class="form-group" style="margin-top: 15px;">
                 <label>Username:</label>
                 <input type="text" id="reg-username" placeholder="Buat nama pengguna Anda">
             </div>
-            
             <div class="form-group">
                 <label>Gmail Asli:</label>
                 <input type="email" id="reg-email" placeholder="Masukkan gmail aktif Anda">
             </div>
-            
             <div class="form-group">
                 <label>Kata Sandi:</label>
                 <input type="password" id="reg-pass" placeholder="Buat kata sandi baru">
             </div>
-            
             <div class="form-group">
                 <label>Mengulang Kata Sandi:</label>
                 <input type="password" id="reg-pass-confirm" placeholder="Ketik ulang kata sandi Anda">
             </div>
-            
             <button class="btn-submit-auth" onclick="handleRegisterStep1()">DAFTAR SEKARANG YAW</button>
         </div>
 
-        <!-- LANGKAH 2: VERIFIKASI KODE OTP 3 DIGIT -->
+        <!-- LANGKAH 2 -->
         <div class="register-card" id="reg-step-2" style="display: none;">
             <h3>VERIFIKASI OTP</h3>
             <p style="font-size: 0.85rem; color: var(--text-gray); text-align: center; margin-bottom: 15px;" id="otp-info-text">Kode OTP 3-digit telah dikirim ke email Anda.</p>
-            
             <div class="form-group">
                 <label>Kolom Kode OTP 3 Digit:</label>
-                <input type="number" id="otp-input" placeholder="Masukkan 3 digit angka" min="100" max="999">
+                <input type="number" id="otp-input" placeholder="Masukkan 3 digit angka">
             </div>
-            
-            <!-- TIMER HITUNG MUNDUR 7 MENIT -->
             <div class="timer-text" id="otp-timer">07:00</div>
-            
-            <button class="btn-submit-auth" style="background: #3498db; color: #fff;" onclick="handleVerifyOTP()">KIRIM YAWW</button>
-        </div>
-    </div>
-
-    <!-- WEB ISI UTAMA -->
-    <header>
-        <div class="logo">TIAN PROJECT</div>
-        <nav>
-            <a href="#tian-promuy">Tian Promuy</a>
-            <a href="#ecomers">Ecomers</a>
-            <a href="#membership">Membership</a>
-        </nav>
-    </header>
-
-    <section class="container" id="tian-promuy">
